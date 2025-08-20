@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quarterly Earnings – Interactive RevealJS Deck</title>
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/theme/black.css" id="theme" />
+  <!-- Highlight.js (built-in via plugin/highlight) theme -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/plugin/highlight/monokai.css" />
+  <style>
+    .brand-badge { position: absolute; top: 10px; right: 16px; font-size: 14px; opacity: 0.8; }
+    .kpi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .kpi > div { padding: 1rem; border-radius: 16px; background: rgba(255,255,255,0.06); box-shadow: 0 6px 24px rgba(0,0,0,0.2); }
+    .tiny { font-size: 0.6em; }
+    .muted { opacity: 0.8; }
+    .footnote { font-size: 0.5em; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!-- TITLE -->
+      <section>
+        <h2>Quarterly Earnings Report</h2>
+        <p class="muted">Interactive stakeholder presentation (RevealJS)</p>
+        <p class="brand-badge">Contact: <a href="mailto:23f2004131@ds.study.iitm.ac.in">23f2004131@ds.study.iitm.ac.in</a></p>
+        <p>
+          <small>Use 
+            <span class="fragment">→ / space</span>, 
+            <span class="fragment">press <kbd>S</kbd> for speaker notes</span>, 
+            <span class="fragment">press <kbd>F</kbd> for fullscreen</span>
+          </small>
+        </p>
+        <aside class="notes">
+          Welcome stakeholders. This deck showcases a modern, interactive format for earnings.
+          Mention navigation keys, speaker view (<kbd>S</kbd>), and fullscreen (<kbd>F</kbd>).
+        </aside>
+      </section>
+
+      <!-- KPI OVERVIEW with fragments/animation -->
+      <section>
+        <h3>At-a-Glance KPIs</h3>
+        <div class="kpi">
+          <div class="fragment">
+            <h4>Revenue</h4>
+            <p><strong>$4.2B</strong> <span class="tiny">(+7% YoY)</span></p>
+          </div>
+          <div class="fragment">
+            <h4>Operating Margin</h4>
+            <p><strong>22.4%</strong> <span class="tiny">(+90 bps)</span></p>
+          </div>
+          <div class="fragment">
+            <h4>EPS (Dil.)</h4>
+            <p><strong>$1.56</strong> <span class="tiny">(+11% YoY)</span></p>
+          </div>
+        </div>
+        <aside class="notes">
+          Reveal each KPI with fragments to pace the story.
+          Replace placeholder numbers with actuals before publishing.
+        </aside>
+      </section>
+
+      <!-- MARKDOWN SLIDE -->
+      <section data-markdown>
+        <textarea data-template>
+### Highlights (Markdown slide)
+- **Client growth**: +12% QoQ
+- **Credit losses**: within guidance
+- **Technology**: Cloud migration on track; 65% workloads modernized
+- **ESG**: Financed emissions intensity down *3%*
+
+> This slide is authored in Markdown using the `data-markdown` plugin.
+
+Note: Speaker notes go in the companion slide using HTML `aside.notes` on a non-Markdown slide.
+        </textarea>
+      </section>
+
+      <!-- CODE SAMPLES with syntax highlighting -->
+      <section>
+        <h3>Reconciliation Snippet (Code Highlight)</h3>
+        <pre><code class="language-python">import pandas as pd
+
+def reconcile(ledger_df, gl_df):
+    merged = ledger_df.merge(gl_df, on=["account", "period"], suffixes=("_ledger", "_gl"))
+    merged["variance"] = merged["amount_ledger"] - merged["amount_gl"]
+    return merged.loc[merged["variance"].abs() &gt; 0.01]
+
+# Example usage
+# out = reconcile(ledger, general_ledger)
+# print(out.head())
+</code></pre>
+        <aside class="notes">
+          Call out syntax highlighting via the highlight plugin. Emphasize reproducible reconciliation.
+        </aside>
+      </section>
+
+      <!-- MATH (financial formula) -->
+      <section>
+        <h3>Financial Math (KaTeX)</h3>
+        <p>Dividend Discount Model (constant growth):</p>
+        <p>\[ P_0 = \frac{D_1}{r - g} \]</p>
+        <p>WACC:</p>
+        <p>\[ \text{WACC} = \frac{E}{V} r_e + \frac{D}{V} r_d (1 - T_c) \]</p>
+        <aside class="notes">
+          Confirm the math plugin renders in your browser. You can toggle between KaTeX/MathJax in init options.
+        </aside>
+      </section>
+
+      <!-- SPEAKER NOTES DEMO -->
+      <section>
+        <h3>Guidance &amp; Outlook</h3>
+        <ul>
+          <li class="fragment">Revenue growth expected in the mid-single digits</li>
+          <li class="fragment">Operating leverage from automation programs</li>
+          <li class="fragment">Capital return: buybacks + dividend increase</li>
+        </ul>
+        <aside class="notes">
+          Discuss macro assumptions, risk factors, and scenario sensitivity.
+          Reminder: Open speaker view (press S) to see these cues.
+        </aside>
+      </section>
+
+      <!-- CONTACT -->
+      <section>
+        <h3>Questions?</h3>
+        <p>Technical consultant:<br><strong>Astitva Agarwal</strong></p>
+        <p><a href="mailto:23f2004131@ds.study.iitm.ac.in">23f2004131@ds.study.iitm.ac.in</a></p>
+        <p class="footnote">© 2025 Your Financial Institution — For stakeholder review only.</p>
+        <aside class="notes">
+          Close with contact details and next steps.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js core & plugins -->
+  <script src="https://unpkg.com/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/markdown/markdown.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/math/math.js"></script>
+  <!-- KaTeX for math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <script>
+    // Initialize Reveal with plugins
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
+      // KaTeX config for math plugin
+      math: {
+        engine: 'katex',
+        katex: window.katex,
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "\\[", right: "\\]", display: true },
+          { left: "$", right: "$", display: false }
+        ]
+      }
+    });
+  </script>
+</body>
+</html>
